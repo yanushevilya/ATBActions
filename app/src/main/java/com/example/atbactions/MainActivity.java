@@ -20,6 +20,7 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -27,6 +28,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     DbHandler dbHandler;
+
+    Button btn_addAllLinks, btn_addProduct;
 
 //    TextView tv1 = findViewById(R.id.tv1);
 //
@@ -67,7 +70,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btn_addProduct = (Button) findViewById(R.id.btn_addProduct);
+        btn_addProduct.setOnClickListener(this);
+        btn_addAllLinks = (Button) findViewById(R.id.btn_addAllLinks);
+        btn_addAllLinks.setOnClickListener(this);
+
+
         dbHandler = new DbHandler(this);
+
 
     }
 
@@ -135,11 +145,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_addAllLinks:
                 // получаем ссылки на страницы всех подкатегорий товаров
                 Document document = getCookies(html+location);
+                System.out.println(document.toString());
                 Elements links = document.getElementsByTag("a");
                 links = links.select(catalogLinks);
-//                for (Element l: links) {
-//                    System.out.println(l.absUrl("href"));
-//                }
+                for (Element l: links) {
+                    System.out.println(l.absUrl("href"));
+                }
 
                 // получаем ссылки на подстраницы всех подкатегорий товаров (страницы пагинации)
                 for (Element el: links) {
