@@ -150,11 +150,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                     saveDataOnStorage(l.absUrl("href") + "\n"); // запись ссылок в файл
                         // Добавляем запись
                         contentValues.put(DbHandler.KEY_LINK, l.absUrl("href"));
+                        sqLiteDatabase.insert(DbHandler.TABLE_LINKS, null, contentValues);
+                        break;
                     }
                 }
 
 
         }
+        dbHandler.close();
     }
 
 //
