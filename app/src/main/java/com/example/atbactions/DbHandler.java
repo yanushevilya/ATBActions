@@ -13,31 +13,30 @@ public class DbHandler extends SQLiteOpenHelper {
     // поля базы данных
     public final static int DATABASE_VERSION = 1;
     public final static String DATABASE_NAME = "ATBProductsDB";
-    public final static String TABLE_PRODUCTS = "ATBProductsTable";
+//    public final static String TABLE_PRODUCTS = "ATBProductsTable";
     public final static String TABLE_LINKS = "ATBLinksTable";
 
     // поля таблицы ATBProductsTable
     public final static String KEY_ID = "_id";
-    public final static String KEY_CODE = "code";
-    public final static String KEY_NAME = "name";
-    public final static String KEY_IMAGE = "image";
-    public final static String KEY_COAST = "coast";
+//    public final static String KEY_CODE = "code";
+//    public final static String KEY_NAME = "name";
+//    public final static String KEY_IMAGE = "image";
+//    public final static String KEY_COAST = "coast";
 
     // поля таблицы ATBLinksTable
     public final static String KEY_LINK = "link";
 
     // конструктор
-    public DbHandler(@Nullable Context context) {
+    public DbHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     // сработает при создании базы данных (вызывается только если БД не существует и ее надо создавать)
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_PRODUCTS + "(" + KEY_ID + " integer primary key, " + KEY_CODE +
-                " integer, " + KEY_NAME + " text, " + KEY_IMAGE + " text, " + KEY_COAST + " integer)");
-        db.execSQL("create table " + TABLE_LINKS + "(" + KEY_ID + " integer primary key, " + KEY_LINK + " text)");
-
+//        db.execSQL("create table " + TABLE_PRODUCTS + "(" + KEY_ID + " integer primary key, " + KEY_CODE +
+//                " integer, " + KEY_NAME + " text, " + KEY_IMAGE + " text, " + KEY_COAST + " integer)");
+        db.execSQL("create table " + TABLE_LINKS + "(" + KEY_ID + " integer primary key, " + KEY_LINK + " text" + ");");
 
     }
 
@@ -45,7 +44,7 @@ public class DbHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // для обновления структуры таблицы БД можно сначала уничтожить существующую таблицу
-        db.execSQL("drop table if exists " + TABLE_PRODUCTS);
+//        db.execSQL("drop table if exists " + TABLE_PRODUCTS);
         // после чего вызвать метод onCreate для создания новой версии таблицы с обновленной структурой
         onCreate(db);
 
