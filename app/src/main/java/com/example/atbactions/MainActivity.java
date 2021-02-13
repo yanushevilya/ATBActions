@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //    TextView tv1 = findViewById(R.id.tv1);
 //
-    // локация
+    // локация 17
     String location = "17";
     // исходная ссылка HTML
     String html = "https://zakaz.atbmarket.com/";
